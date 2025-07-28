@@ -1,0 +1,31 @@
+model_id: Qwen/Qwen2.5-VL-7B-Instruct
+model_family: qwen2.5-vl
+
+LoRA:
+  r: 0
+  alpha: 128
+  dropout: 0.05
+
+loss_type: grad_ascent
+tune_vision_tower: False
+tune_mm_projector: False
+tune_language_model: True
+data_path: ./workspace/data/vpd-sft/safety_evaluator_training_stage2_v1.json
+step_idx: 0,1,2,3
+split: retain
+step_token: <think>,</think>
+batch_size: 1
+gradient_accumulation_steps: 16
+max_grad_norm: 1.0
+num_epochs: 4
+save_dir: models/vpd-vl_ft_${num_epochs}_epochs_lr${lr}_${model_family}_${step_idx}
+save_steps: 21
+lr: 5e-6
+weight_decay: 0.01
+seed: 233
+workers: 4
+lr_scheduler_type: "cosine"
+warmup_ratio: 0.06
+max_train_steps: -1
+report_to: "wandb"
+resume_from_checkpoint: ""

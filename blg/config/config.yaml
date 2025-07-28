@@ -1,0 +1,29 @@
+# data path
+dataset: nuPlanMini
+cache_dir: /home/ec2-user/.cache
+data_dirs: 
+    nuplan_mini: /home/ec2-user/_Yingzi/VPD-Driver/workspace/data/nuplan/dataset
+
+# data loader
+num_workers: 32
+batch_size: 32
+max_agent_num: 40
+desired_dt: 0.5
+history_sec: 5.0
+future_sec: 4.0
+max_number_lane: 200
+num_point_per_lane: 1000
+radius: 200
+traj_attr: 6
+map_attr: 3
+num_agent_types: 5
+collision_check_radius: 30
+
+# occupancy graph
+grid_interval: 5.0
+dt: 0.1
+horizon: 30 
+
+# behavior parameters
+acceleration: 4.0
+deceleration: -1.0
